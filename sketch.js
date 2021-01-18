@@ -5,13 +5,11 @@ var score = 0
 var life = 3
 
 function preload(){
-   birdflying =  loadAnimation("birdImage1.png","birdImage2.png");
-   backgroundImage = loadImage("skyImage.jpg")
-   hitAnimation = loadAnimation("birdImage1hit.png","birdImage2hit.png")
+   birdflying =  loadAnimation("images/birdImage1.png","images/birdImage2.png");
+   backgroundImage = loadImage("images/skyImage.jpg")
+   hitAnimation = loadAnimation("images/birdImage1hit.png","images/birdImage2hit.png")
    hitSound = loadSound("hit.ogg");
-   loseSound = loadSound("lose.mp3"); 
-
-
+   loseSound = loadSound("lose.wav");
 }
 
 function setup(){
@@ -99,12 +97,14 @@ if(gamestate == "Play"){
     bird.changeAnimation("hit",hitAnimation)
     life = life - 1;
     
+    pipe1Group[0].destroy();
     hitSound.play();
  }
 
 if (pipe2Group.bounceOff(bird)){
     bird.changeAnimation("hit",hitAnimation)
     life = life - 1;
+    pipe2Group[0].destroy();
     hitSound.play();
 }
 
@@ -112,7 +112,7 @@ if (life == 0){
   gamestate = "End"  
 }
 
-if(frameCount%1 == 0){
+if(frameCount%10 == 0){
     score = score + 1;
 };
 
@@ -159,7 +159,9 @@ if(bird.y>410){
     textFont("cursive");
     fill("darkred");
     text("GAME OVER!",380,200);
-    //loseSound.play();
+    loseSound.play();
+    sleep(10);
+    loseSound.stop();    
  
   }  
 }
@@ -175,9 +177,9 @@ function spawnObstacles1(){
     obstacle1.velocity.x = -2;
     var rand1 = Math.round(random(1,2))
     switch(rand1){
-        case 1: obstacle1.addImage(loadImage( "pipe1.png"));
+        case 1: obstacle1.addImage(loadImage("images/pipe1.png"));
         break
-        case 2: obstacle1.addImage(loadImage("pipebigImage1.png"));
+        case 2: obstacle1.addImage(loadImage("images/pipebigImage1.png"));
         break
     }
     obstacle1.scale =1.
@@ -198,9 +200,9 @@ if(frameCount%120 == 0){
     obstacle2.velocity.x = -2; 
     var rand2 = Math.round(random(1,2))
     switch(rand2){
-        case 1: obstacle2.addImage(loadImage("pipe2.png"));
+        case 1: obstacle2.addImage(loadImage("images/pipe2.png"));
         break
-        case 2: obstacle2.addImage(loadImage("pipebigImage2.png"));
+        case 2: obstacle2.addImage(loadImage("images/pipebigImage2.png"));
         break
     }
     obstacle2.scale = 1.5;
@@ -212,7 +214,7 @@ if(frameCount%120 == 0){
 }
 function spawnGreenChilli(){ 
     greenChilli = createSprite(1000,Math.round(random(150,350)),50,100);
-    greenChilli.addImage(loadImage("greenchilli.png"))
+    greenChilli.addImage(loadImage("images/greenchilli.png"))
     greenChilli.scale = 0.2;
 
     greenChilli.velocity.x = -2; 
@@ -226,7 +228,7 @@ function spawnGreenChilli(){
 function spawnRedChilli(){  
     
         redChilli = createSprite(1000,Math.round(random(150,350)),50,100);        
-        redChilli.addImage(loadImage("redchilli.png"))
+        redChilli.addImage(loadImage("images/redchilli.png"))
         redChilli.scale = 0.08;        
         redChilli.velocity.x = -2;        
         redchilliGroup.add(redChilli);
@@ -237,7 +239,7 @@ function spawnRedChilli(){
     function spawnEggs(){
       if(frameCount%1000 == 0){
         eggs = createSprite(1000,100);
-        eggs.addImage(loadImage("eggs.png"));
+        eggs.addImage(loadImage("images/eggs.png"));
         eggs.scale = 0.5;
         eggs.velocity.x = -2;
 
