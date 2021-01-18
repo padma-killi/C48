@@ -220,8 +220,7 @@ function spawnGreenChilli(){
     greenChilli.velocity.x = -2; 
     greenchilliGroup.add(greenChilli);
 
-    greenChilli.lifetime = 500;  
-   
+    greenChilli.lifetime = 500;     
     
 }
 
