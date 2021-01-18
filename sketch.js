@@ -1,8 +1,8 @@
-var bird,birdflying
-var greenchilliGroup,redchilliGroup,pipe1Group,pipe2Group,eggsGroup
-var gamestate = "info"
-var score = 0
-var life = 3
+var bird,birdflying;
+var greenchilliGroup,redchilliGroup,pipe1Group,pipe2Group,eggsGroup;
+var gamestate = "info";
+var score = 0;
+var life = 3;
 
 function preload(){
    birdflying =  loadAnimation("images/birdImage1.png","images/birdImage2.png");
