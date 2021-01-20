@@ -1,5 +1,5 @@
 var bird,birdflying;
-var greenchilliGroup,redchilliGroup,pipe1Group,pipe2Group,eggsGroup;l
+var greenchilliGroup,redchilliGroup,pipe1Group,pipe2Group,eggsGroup;
 var gamestate = "info";
 var score = 0;
 var life = 3;
