@@ -83,12 +83,12 @@ if(gamestate == "Play"){
  }
 
  if(redchilliGroup.isTouching(bird)){
-   bird.scale = bird.scale+0.15;
+   bird.scale = 0.6;
    redchilliGroup[0].destroy();
  }
 
  if(greenchilliGroup.isTouching(bird)){
-    bird.scale = bird.scale-0.15;
+    bird.scale = 0.2
     greenchilliGroup[0].destroy();    
  }
 
